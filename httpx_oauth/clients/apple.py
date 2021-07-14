@@ -63,7 +63,8 @@ class AppleOAuth2(BaseOAuth2[Dict[str, Any]]):
             scope,
             extras_params={
                 **extras_params,
-                "response_type": "code+id_token",
+                # "response_type": "code+id_token",
+                "response_type": "code",
                 "response_mode": "form_post",
             },
         )
@@ -139,6 +140,7 @@ class AppleOAuth2(BaseOAuth2[Dict[str, Any]]):
                 | {"content-type": "application/x-www-form-urlencoded"},
             )
             data = cast(Dict[str, Any], response.json())
+
             if response.status_code == 400:
                 raise GetAccessTokenError(data)
 

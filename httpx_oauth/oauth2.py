@@ -110,8 +110,10 @@ class BaseOAuth2(Generic[T]):
 
         return f"{self.authorize_endpoint}?{urlencode(params)}"
 
-    async def get_access_token(self, code: str, redirect_uri: str):
+    async def get_access_token(self, code: str, redirect_uri: str) -> dict:
+        # self.request_headers.update({"content-type": "application/x-www-form-urlencoded"})
         async with httpx.AsyncClient() as client:
+            # https://developer.apple.com/documentation/sign_in_with_apple/generate_and_validate_tokens
             response = await client.post(
                 self.access_token_endpoint,
                 data={
@@ -123,7 +125,6 @@ class BaseOAuth2(Generic[T]):
                 },
                 headers=self.request_headers,
             )
-
             data = cast(Dict[str, Any], response.json())
 
             if response.status_code == 400:
