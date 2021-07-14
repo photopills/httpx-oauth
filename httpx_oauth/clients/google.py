@@ -7,7 +7,7 @@ from httpx_oauth.errors import GetIdEmailError
 from httpx_oauth.oauth2 import BaseOAuth2
 
 AUTHORIZE_ENDPOINT = "https://accounts.google.com/o/oauth2/v2/auth"
-ACCESS_TOKEN_ENDPOINT = "https://oauth2.googleapis.com/token"
+ACCESS_TOKEN_ENDPOINT = "https://accounts.google.com/o/oauth2/token"
 REVOKE_TOKEN_ENDPOINT = "https://accounts.google.com/o/oauth2/revoke"
 BASE_SCOPES = [
     "https://www.googleapis.com/auth/userinfo.profile",
@@ -38,6 +38,7 @@ class GoogleOAuth2(BaseOAuth2[GoogleOAuth2AuthorizeParams]):
 
     async def get_id_email(self, token: str) -> Tuple[str, str]:
         async with httpx.AsyncClient() as client:
+            token = token["access_token"]
             response = await client.get(
                 PROFILE_ENDPOINT,
                 params={"personFields": "emailAddresses"},
