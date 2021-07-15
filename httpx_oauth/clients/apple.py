@@ -35,8 +35,8 @@ class AppleOAuth2(BaseOAuth2[Dict[str, Any]]):
         self,
         client_id: str,
         client_secret: str,
-        client_team: str,
-        client_key: str,
+        team: str,
+        key: str,
         name: str = "apple",
     ):
         super().__init__(
@@ -47,8 +47,8 @@ class AppleOAuth2(BaseOAuth2[Dict[str, Any]]):
             name=name,
             base_scopes=BASE_SCOPES,
         )
-        self.client_team = client_team
-        self.client_key = client_key
+        self.team = team
+        self.key = key
 
     async def get_authorization_url(
         self,
@@ -57,18 +57,19 @@ class AppleOAuth2(BaseOAuth2[Dict[str, Any]]):
         scope: Optional[list[str]] = BASE_SCOPES,
         extras_params: Optional[T] = {},
     ) -> str:
-        url = await super().get_authorization_url(
-            redirect_uri,
-            state,
-            scope,
-            extras_params={
-                **extras_params,
-                # "response_type": "code+id_token",
-                "response_type": "code",
-                "response_mode": "form_post",
-            },
-        )
-        # Ensure that
+        return (
+            await super().get_authorization_url(
+                redirect_uri,
+                state,
+                scope,
+                extras_params={
+                    **extras_params,
+                    # "response_type": "code+id_token",
+                    "response_type": "code",
+                    "response_mode": "form_post",
+                },
+            )
+        ).replace("+", "%20") # enforce Apple scope separator
         return url
 
     async def get_id_email(self, token: str) -> Tuple[str, str]:
@@ -149,27 +150,23 @@ class AppleOAuth2(BaseOAuth2[Dict[str, Any]]):
     @property
     def client_secret_jwt(self):
         """
-        Provide an encoded client secret JWT
+        Provide an encoded client_secret JWT needed
+        to get Apple's get_access_token
         """
 
         now = int(time.time())
-        client_id = self.client_id
-        team_id = self.client_team
-        key_id = self.client_key
-        private_key = self.client_secret
-
-        headers = {"kid": key_id}
+        headers = {"kid": self.key}
         payload = {
-            "iss": team_id,
+            "iss": self.team,
             "iat": now,
             "exp": now + JWT_SIGNED_TTL_SEC,
             "aud": JWT_SIGNED_AUDIENCE,
-            "sub": client_id,
+            "sub": self.client_id,
         }
 
         return jwt.encode(
             payload,
-            key=private_key,
+            key=self.client_secret,
             algorithm="ES256",
             headers=headers,
         )
