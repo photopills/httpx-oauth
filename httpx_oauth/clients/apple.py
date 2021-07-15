@@ -1,7 +1,7 @@
 import time
 
 from os import replace
-from typing import Any, Dict, Optional, Tuple, cast, TypeVar
+from typing import Any, Dict, Optional, Tuple, List, cast, TypeVar
 from urllib.parse import urlencode
 from jwt.algorithms import RSAAlgorithm
 from jwt.exceptions import PyJWTError
@@ -18,6 +18,7 @@ JWT_SIGNED_TTL_SEC = 6 * 30 * 24 * 60 * 60
 AUTHORIZE_ENDPOINT = "https://appleid.apple.com/auth/authorize"
 ACCESS_TOKEN_ENDPOINT = "https://appleid.apple.com/auth/token"
 BASE_SCOPES = ["email", "name"]
+SCOPES_SEPARATOR = "%20"
 
 # TODO: Improve Exception
 AuthFailed = Exception
@@ -37,6 +38,7 @@ class AppleOAuth2(BaseOAuth2[Dict[str, Any]]):
         client_secret: str,
         team: str,
         key: str,
+        scopes: Optional[List[str]] = BASE_SCOPES,
         name: str = "apple",
     ):
         super().__init__(
@@ -45,7 +47,7 @@ class AppleOAuth2(BaseOAuth2[Dict[str, Any]]):
             authorize_endpoint=AUTHORIZE_ENDPOINT,
             access_token_endpoint=ACCESS_TOKEN_ENDPOINT,
             name=name,
-            base_scopes=BASE_SCOPES,
+            base_scopes=scopes,
         )
         self.team = team
         self.key = key
@@ -69,8 +71,10 @@ class AppleOAuth2(BaseOAuth2[Dict[str, Any]]):
                     "response_mode": "form_post",
                 },
             )
-        ).replace("+", "%20") # enforce Apple scope separator
-        return url
+        ).replace(
+            "+",
+            SCOPES_SEPARATOR,
+        )  # enforce Apple scope separator
 
     async def get_id_email(self, token: str) -> Tuple[str, str]:
         decoded = await self.decode_id_token(token.get("id_token"))
