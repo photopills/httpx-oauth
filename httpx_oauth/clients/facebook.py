@@ -26,7 +26,8 @@ class FacebookOAuth2(BaseOAuth2[Dict[str, Any]]):
             base_scopes=BASE_SCOPES,
         )
 
-    async def get_long_lived_access_token(self, token: str):
+    async def get_long_lived_access_token(self, token: Dict[str, Any]):
+        token = token["access_token"]
         async with httpx.AsyncClient() as client:
             response = await client.post(
                 self.access_token_endpoint,
@@ -45,7 +46,8 @@ class FacebookOAuth2(BaseOAuth2[Dict[str, Any]]):
 
             return OAuth2Token(data)
 
-    async def get_id_email(self, token: str) -> Tuple[str, str]:
+    async def get_id_email(self, token: Dict[str, Any]) -> Tuple[str, str]:
+        token = token["access_token"]
         async with httpx.AsyncClient() as client:
             response = await client.get(
                 PROFILE_ENDPOINT,

@@ -24,8 +24,9 @@ class LinkedInOAuth2(BaseOAuth2[Dict[str, Any]]):
             base_scopes=BASE_SCOPES,
         )
 
-    async def get_id_email(self, token: str) -> Tuple[str, str]:
+    async def get_id_email(self, token: Dict[str, Any]) -> Tuple[str, str]:
         async with httpx.AsyncClient() as client:
+            token = token["access_token"]
             profile_response = await client.get(
                 PROFILE_ENDPOINT,
                 headers={"Authorization": f"Bearer {token}"},

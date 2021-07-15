@@ -40,8 +40,9 @@ class MicrosoftGraphOAuth2(BaseOAuth2[Dict[str, Any]]):
             redirect_uri, state=state, scope=scope, extras_params=extras_params
         )
 
-    async def get_id_email(self, token: str) -> Tuple[str, str]:
+    async def get_id_email(self, token: Dict[str, Any]) -> Tuple[str, str]:
         async with httpx.AsyncClient() as client:
+            token = token["access_token"]
             response = await client.get(
                 PROFILE_ENDPOINT,
                 headers={"Authorization": f"Bearer {token}"},

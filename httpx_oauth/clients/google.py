@@ -36,7 +36,7 @@ class GoogleOAuth2(BaseOAuth2[GoogleOAuth2AuthorizeParams]):
             base_scopes=BASE_SCOPES,
         )
 
-    async def get_id_email(self, token: str) -> Tuple[str, str]:
+    async def get_id_email(self, token: Dict[str, Any]) -> Tuple[str, str]:
         async with httpx.AsyncClient() as client:
             token = token["access_token"]
             response = await client.get(
