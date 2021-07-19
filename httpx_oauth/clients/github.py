@@ -1,4 +1,4 @@
-from typing import Any, Dict, List, Tuple, cast
+from typing import Any, Dict, List, Tuple, Optional, cast
 
 import httpx
 from typing_extensions import TypedDict

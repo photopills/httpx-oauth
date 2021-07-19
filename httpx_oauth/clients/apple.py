@@ -2,7 +2,6 @@ import time
 
 from os import replace
 from typing import Any, Dict, Optional, Tuple, List, cast, TypeVar
-from urllib.parse import urlencode
 from jwt.algorithms import RSAAlgorithm
 from jwt.exceptions import PyJWTError
 import jwt
