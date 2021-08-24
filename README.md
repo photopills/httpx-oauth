@@ -7,7 +7,10 @@
 [![build](https://github.com/frankie567/httpx-oauth/workflows/Build/badge.svg)](https://github.com/frankie567/httpx-oauth/actions)
 [![codecov](https://codecov.io/gh/frankie567/httpx-oauth/branch/master/graph/badge.svg)](https://codecov.io/gh/frankie567/httpx-oauth)
 [![PyPI version](https://badge.fury.io/py/httpx-oauth.svg)](https://badge.fury.io/py/httpx-oauth)
-[![GitHub Sponsors](https://img.shields.io/github/sponsors/frankie567?style=social)](https://github.com/sponsors/frankie567)
+
+<p align="center">
+    <a href="https://www.buymeacoffee.com/frankie567"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=frankie567&button_colour=FF5F5F&font_colour=ffffff&font_family=Lato&outline_colour=000000&coffee_colour=FFDD00"></a>
+</p>
 
 ---
 
@@ -16,8 +19,6 @@
 **Source Code**: <a href="https://github.com/frankie567/httpx-oauth" target="_blank">https://github.com/frankie567/httpx-oauth</a>
 
 ---
-
-<p align="center">⚠️ This library is still in early development stage ⚠️</p>
 
 ## Installation
 
