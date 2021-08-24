@@ -1,8 +1,7 @@
 import time
 
 from os import replace
-from typing import Any, Dict, Optional, Tuple, List, cast, TypeVar
-from urllib.parse import urlencode
+from typing import Any, Dict, List, Optional, Tuple, TypeVar, cast
 from jwt.algorithms import RSAAlgorithm
 from jwt.exceptions import PyJWTError
 import jwt
@@ -22,6 +21,7 @@ SCOPES_SEPARATOR = "%20"
 
 # TODO: Improve Exception
 AuthFailed = Exception
+AppleKeyIDNotFound = Exception
 
 
 class GetLongLivedAccessTokenError(Exception):
@@ -32,6 +32,16 @@ T = TypeVar("T")
 
 
 class AppleOAuth2(BaseOAuth2[Dict[str, Any]]):
+    """
+    Provides the Apple OAuth2 specific implementation
+
+    It ensures that the authorization url uses the expected scopes separator
+    and composes the encoded `client_secret_jwt` needed to request the
+    `access_token`.
+
+    It also decodes the `id_token` validating Apple's JWK
+    """
+
     def __init__(
         self,
         client_id: str,
@@ -66,17 +76,16 @@ class AppleOAuth2(BaseOAuth2[Dict[str, Any]]):
                 scope,
                 extras_params={
                     **extras_params,
-                    # "response_type": "code+id_token",
-                    "response_type": "code",
+                    "response_type": "code",  # "code+id_token",
                     "response_mode": "form_post",
                 },
             )
         ).replace(
             "+",
             SCOPES_SEPARATOR,
-        )  # enforce Apple scope separator
+        )  # enforce Apple's scope separator
 
-    async def get_id_email(self, token: str) -> Tuple[str, str]:
+    async def get_id_email(self, token: Dict[str, Any]) -> Tuple[str, str]:
         decoded = await self.decode_id_token(token.get("id_token"))
         return decoded.get("sub"), decoded.get("email")
 
@@ -86,25 +95,29 @@ class AppleOAuth2(BaseOAuth2[Dict[str, Any]]):
         user data.
         """
         if not id_token:
-            raise AuthFailed(self, "Missing id_token parameter")
+            raise GetIdEmailError("Missing id_token parameter")
 
         try:
-            kid = jwt.get_unverified_header(id_token).get("kid")
+            header = jwt.get_unverified_header(id_token)
+            kid = header.get("kid")
+            alg = header.get("alg")
             public_key = RSAAlgorithm.from_jwk(await self.get_apple_jwk(kid))
             decoded = jwt.decode(
                 id_token,
                 key=public_key,
                 audience=self.client_id,
-                algorithms=["RS256"],
+                algorithms=[alg],
             )
-        except PyJWTError:
-            raise AuthFailed(self, "Token validation failed")
+        except PyJWTError as e:
+            raise GetIdEmailError(str(e))
 
         return decoded
 
     async def get_apple_jwk(self, kid=None):
         """
         Return requested Apple public key or all available.
+
+        https://developer.apple.com/documentation/sign_in_with_apple/fetch_apple_s_public_key_for_verifying_token_signature  #noqa
         """
         async with httpx.AsyncClient() as client:
             response = await client.get(
@@ -118,7 +131,10 @@ class AppleOAuth2(BaseOAuth2[Dict[str, Any]]):
             raise AuthFailed(self, "Invalid jwk response")
 
         if kid:
-            return json.dumps([key for key in keys if key["kid"] == kid][0])
+            try:
+                return json.dumps([key for key in keys if key["kid"] == kid][0])
+            except:
+                raise AppleKeyIDNotFound("Key not found")
         else:
             return (json.dumps(key) for key in keys)
 
@@ -141,8 +157,7 @@ class AppleOAuth2(BaseOAuth2[Dict[str, Any]]):
                     "client_id": client_id or self.client_id,
                     "client_secret": self.client_secret_jwt,
                 },
-                headers=self.request_headers
-                | {"content-type": "application/x-www-form-urlencoded"},
+                headers=self.request_headers,
             )
             data = cast(Dict[str, Any], response.json())
 
@@ -155,7 +170,7 @@ class AppleOAuth2(BaseOAuth2[Dict[str, Any]]):
     def client_secret_jwt(self):
         """
         Provide an encoded client_secret JWT needed
-        to get Apple's get_access_token
+        to get Apple's access_token
         """
 
         now = int(time.time())
