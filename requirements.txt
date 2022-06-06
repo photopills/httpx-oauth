@@ -1,4 +1,4 @@
-httpx >=0.18,<0.23
+httpx >=0.18,<=0.23
 typing-extensions
 # our deps for support apple oauth
 cryptography
