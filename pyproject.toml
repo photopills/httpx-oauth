@@ -17,7 +17,7 @@ classifiers = [
 ]
 description-file = "README.md"
 requires-python = ">=3.7"
-requires = ["httpx >=0.18,<=0.23", "typing-extensions", "cryptography"]
+requires = ["httpx >=0.18,<=0.30", "typing-extensions", "cryptography"]
 
 [tool.flit.metadata.requires-extra]
 
