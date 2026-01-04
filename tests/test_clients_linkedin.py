@@ -6,16 +6,15 @@ from httpx import Response
 
 from httpx_oauth.clients.linkedin import (
     EMAIL_ENDPOINT,
-    LinkedInOAuth2,
     PROFILE_ENDPOINT,
+    LinkedInOAuth2,
 )
-from httpx_oauth.errors import GetIdEmailError
+from httpx_oauth.exceptions import GetIdEmailError
 
 client = LinkedInOAuth2("CLIENT_ID", "CLIENT_SECRET")
 
 
 def test_linkedin_oauth2():
-
     assert (
         client.authorize_endpoint == "https://www.linkedin.com/oauth/v2/authorization"
     )
@@ -78,8 +77,7 @@ class TestLinkedInGetIdEmail:
         with pytest.raises(GetIdEmailError) as excinfo:
             await client.get_id_email("TOKEN")
 
-        assert type(excinfo.value.args[0]) == dict
-        assert excinfo.value.args[0] == {"error": "message"}
+        assert isinstance(excinfo.value.response, Response)
 
     @pytest.mark.asyncio
     @respx.mock
@@ -94,5 +92,4 @@ class TestLinkedInGetIdEmail:
         with pytest.raises(GetIdEmailError) as excinfo:
             await client.get_id_email("TOKEN")
 
-        assert type(excinfo.value.args[0]) == dict
-        assert excinfo.value.args[0] == {"error": "message"}
+        assert isinstance(excinfo.value.response, Response)

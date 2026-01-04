@@ -4,8 +4,8 @@ import pytest
 import respx
 from httpx import Response
 
-from httpx_oauth.clients.google import GoogleOAuth2, PROFILE_ENDPOINT
-from httpx_oauth.errors import GetIdEmailError
+from httpx_oauth.clients.google import PROFILE_ENDPOINT, GoogleOAuth2
+from httpx_oauth.exceptions import GetIdEmailError
 
 client = GoogleOAuth2("CLIENT_ID", "CLIENT_SECRET")
 
@@ -57,5 +57,4 @@ class TestGoogleGetIdEmail:
         with pytest.raises(GetIdEmailError) as excinfo:
             await client.get_id_email("TOKEN")
 
-        assert type(excinfo.value.args[0]) == dict
-        assert excinfo.value.args[0] == {"error": "message"}
+        assert isinstance(excinfo.value.response, Response)

@@ -1,0 +1,154 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "frankie567",
+      "name": "François Voron",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1144727?v=4",
+      "profile": "http://francoisvoron.com",
+      "contributions": [
+        "maintenance"
+      ]
+    },
+    {
+      "login": "XaviTorello",
+      "name": "Xavi Torelló",
+      "avatar_url": "https://avatars.githubusercontent.com/u/8709244?v=4",
+      "profile": "http://xaviertorello.cat",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "fullonic",
+      "name": "dbf",
+      "avatar_url": "https://avatars.githubusercontent.com/u/13336073?v=4",
+      "profile": "https://github.com/fullonic",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "KentonParton",
+      "name": "Kenton Parton",
+      "avatar_url": "https://avatars.githubusercontent.com/u/20202312?v=4",
+      "profile": "http://www.kentonparton.com",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "stepan-chatalyan",
+      "name": "stepan-chatalyan",
+      "avatar_url": "https://avatars.githubusercontent.com/u/78931407?v=4",
+      "profile": "https://github.com/stepan-chatalyan",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Forst",
+      "name": "Foster Snowhill",
+      "avatar_url": "https://avatars.githubusercontent.com/u/369699?v=4",
+      "profile": "https://github.com/Forst",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "williamhatcher",
+      "name": "William Hatcher",
+      "avatar_url": "https://avatars.githubusercontent.com/u/24600763?v=4",
+      "profile": "https://hatcher.work",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "thewchan",
+      "name": "Matt Chan",
+      "avatar_url": "https://avatars.githubusercontent.com/u/49702524?v=4",
+      "profile": "https://github.com/thewchan",
+      "contributions": [
+        "platform"
+      ]
+    },
+    {
+      "login": "mekanix",
+      "name": "Goran Mekić",
+      "avatar_url": "https://avatars.githubusercontent.com/u/610855?v=4",
+      "profile": "http://meka.rs",
+      "contributions": [
+        "platform"
+      ]
+    },
+    {
+      "login": "joonas-yoon",
+      "name": "Joona Yoon",
+      "avatar_url": "https://avatars.githubusercontent.com/u/9527681?v=4",
+      "profile": "joonas.io",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "LindezaGrey",
+      "name": "LindezaGrey",
+      "avatar_url": "https://avatars.githubusercontent.com/u/39629455?v=4",
+      "profile": "http://vibrix.net",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Gr3atWh173",
+      "name": "R. Singh",
+      "avatar_url": "https://avatars.githubusercontent.com/u/11838184?v=4",
+      "profile": "https://github.com/Gr3atWh173",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "lloesche",
+      "name": "Lukas Lösche",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2124094?v=4",
+      "profile": "https://github.com/lloesche",
+      "contributions": [
+        "bug",
+        "code"
+      ]
+    },
+    {
+      "login": "king-jam",
+      "name": "James King",
+      "avatar_url": "https://avatars.githubusercontent.com/u/8225465?v=4",
+      "profile": "https://github.com/king-jam",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "bvolkmer",
+      "name": "Benedikt Volkmer",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7070761?v=4",
+      "profile": "https://github.com/bvolkmer",
+      "contributions": [
+        "code",
+        "bug"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "httpx-oauth",
+  "projectOwner": "frankie567",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true,
+  "commitConvention": "angular",
+  "commitType": "docs"
+}

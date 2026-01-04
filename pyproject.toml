@@ -1,25 +1,89 @@
-[build-system]
-requires = ["flit_core >=2,<3", "setuptools"]
-build-backend = "flit_core.buildapi"
+[tool.ruff]
+target-version = "py39"
 
-[tool.flit.metadata]
-module = "httpx_oauth"
-dist-name = "httpx-oauth"
-author = "François Voron"
-author-email = "fvoron@gmail.com"
-home-page = "https://github.com/frankie567/httpx-oauth"
+[tool.ruff.lint]
+extend-select = ["I", "TRY", "UP"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+addopts = "--cov=httpx_oauth/ --cov-report=term-missing --cov-fail-under=100"
+asyncio_mode = "strict"
+asyncio_default_fixture_loop_scope = "function"
+
+[tool.hatch]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.version]
+source = "regex_commit"
+commit_extra_args = ["-e"]
+path = "httpx_oauth/__init__.py"
+
+[tool.hatch.envs.default]
+installer = "uv"
+dependencies = [
+    "pytest",
+    "ruff",
+    "mkdocs",
+    "mkdocs-material",
+    "mypy",
+    "pytest-cov",
+    "pytest-mock",
+    "mkdocstrings[python]",
+    "griffe-inherited-docstrings",
+    "pytest-asyncio",
+    "respx",
+    "fastapi",
+]
+
+[tool.hatch.envs.default.scripts]
+test = "pytest"
+test-cov-xml = "pytest --cov-report=xml"
+lint = [
+  "ruff format .",
+  "ruff check --fix .",
+  "mypy httpx_oauth/",
+]
+lint-check = [
+  "ruff format --check .",
+  "ruff check .",
+  "mypy httpx_oauth/",
+]
+docs = "mkdocs serve"
+
+[tool.hatch.build.targets.sdist]
+support-legacy = true  # Create setup.py
+
+[build-system]
+requires = ["hatchling", "hatch-regex-commit"]
+build-backend = "hatchling.build"
+
+[project]
+name = "httpx-oauth"
+authors = [
+  { name = "François Voron", email = "fvoron@gmail.com" }
+]
+description = "Async OAuth client using HTTPX"
+readme = "README.md"
+dynamic = ["version"]
 classifiers = [
-    "Programming Language :: Python :: 3.7",
-    "Programming Language :: Python :: 3.8",
+    "License :: OSI Approved :: MIT License",
+    "Development Status :: 5 - Production/Stable",
+    "Framework :: AsyncIO",
+    "Intended Audience :: Developers",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
     "Programming Language :: Python :: 3 :: Only",
 ]
-description-file = "README.md"
-requires-python = ">=3.7"
-requires = ["httpx >=0.18,<=0.30", "typing-extensions", "cryptography"]
+requires-python = ">=3.9"
+dependencies = [
+    "httpx >=0.18"
+]
 
-[tool.flit.metadata.requires-extra]
-
-[tool.flit.metadata.urls]
+[project.urls]
 Documentation = "https://frankie567.github.io/httpx-oauth/"
+Source = "https://github.com/frankie567/httpx-oauth"

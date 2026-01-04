@@ -1,0 +1,37 @@
+{
+    "python.analysis.typeCheckingMode": "basic",
+    "python.analysis.autoImportCompletions": true,
+    "python.terminal.activateEnvironment": true,
+    "python.terminal.activateEnvInCurrentTerminal": true,
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "editor.rulers": [88],
+    "python.defaultInterpreterPath": "${workspaceFolder}/.hatch/httpx-oauth/bin/python",
+    "python.testing.pytestPath": "${workspaceFolder}/.hatch/httpx-oauth/bin/pytest",
+    "python.testing.cwd": "${workspaceFolder}",
+    "python.testing.pytestArgs": ["--no-cov"],
+    "[python]": {
+      "editor.formatOnSave": true,
+      "editor.codeActionsOnSave": {
+        "source.fixAll": "explicit",
+        "source.organizeImports": "explicit"
+      },
+      "editor.defaultFormatter": "charliermarsh.ruff"
+    },
+    "workbench.colorCustomizations": {
+      "titleBar.activeBackground": "#044859",
+      "titleBar.activeForeground": "#ffffff",
+      "titleBar.inactiveBackground": "#03323e",
+      "titleBar.inactiveForeground": "#ffffff99",
+      "statusBar.background": "#0891B2",
+      "statusBar.foreground": "#ffffff",
+      "statusBar.noFolderBackground": "#044859",
+      "statusBar.debuggingBackground": "#219cba",
+      "statusBar.debuggingForeground": "#ffffff",
+      "activityBar.background": "#044859",
+      "activityBar.foreground": "#ffffff",
+      "activityBar.inactiveForeground": "#ffffff80",
+      "activityBarBadge.background": "#0891B2",
+      "activityBarBadge.foreground": "#ffffff"
+    }
+  }

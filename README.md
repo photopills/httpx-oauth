@@ -8,9 +8,11 @@
 [![codecov](https://codecov.io/gh/frankie567/httpx-oauth/branch/master/graph/badge.svg)](https://codecov.io/gh/frankie567/httpx-oauth)
 [![PyPI version](https://badge.fury.io/py/httpx-oauth.svg)](https://badge.fury.io/py/httpx-oauth)
 
-<p align="center">
-    <a href="https://www.buymeacoffee.com/frankie567"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=frankie567&button_colour=FF5F5F&font_colour=ffffff&font_family=Lato&outline_colour=000000&coffee_colour=FFDD00"></a>
-</p>
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
+[![All Contributors](https://img.shields.io/badge/all_contributors-15-orange.svg?style=flat-square)](#contributors-)
+
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ---
 
@@ -26,38 +28,58 @@
 pip install httpx-oauth
 ```
 
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="http://francoisvoron.com"><img src="https://avatars.githubusercontent.com/u/1144727?v=4?s=100" width="100px;" alt="François Voron"/><br /><sub><b>François Voron</b></sub></a><br /><a href="#maintenance-frankie567" title="Maintenance">🚧</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://xaviertorello.cat"><img src="https://avatars.githubusercontent.com/u/8709244?v=4?s=100" width="100px;" alt="Xavi Torelló"/><br /><sub><b>Xavi Torelló</b></sub></a><br /><a href="https://github.com/frankie567/httpx-oauth/commits?author=XaviTorello" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/fullonic"><img src="https://avatars.githubusercontent.com/u/13336073?v=4?s=100" width="100px;" alt="dbf"/><br /><sub><b>dbf</b></sub></a><br /><a href="https://github.com/frankie567/httpx-oauth/commits?author=fullonic" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://www.kentonparton.com"><img src="https://avatars.githubusercontent.com/u/20202312?v=4?s=100" width="100px;" alt="Kenton Parton"/><br /><sub><b>Kenton Parton</b></sub></a><br /><a href="https://github.com/frankie567/httpx-oauth/commits?author=KentonParton" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/stepan-chatalyan"><img src="https://avatars.githubusercontent.com/u/78931407?v=4?s=100" width="100px;" alt="stepan-chatalyan"/><br /><sub><b>stepan-chatalyan</b></sub></a><br /><a href="https://github.com/frankie567/httpx-oauth/commits?author=stepan-chatalyan" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Forst"><img src="https://avatars.githubusercontent.com/u/369699?v=4?s=100" width="100px;" alt="Foster Snowhill"/><br /><sub><b>Foster Snowhill</b></sub></a><br /><a href="https://github.com/frankie567/httpx-oauth/commits?author=Forst" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://hatcher.work"><img src="https://avatars.githubusercontent.com/u/24600763?v=4?s=100" width="100px;" alt="William Hatcher"/><br /><sub><b>William Hatcher</b></sub></a><br /><a href="https://github.com/frankie567/httpx-oauth/commits?author=williamhatcher" title="Code">💻</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/thewchan"><img src="https://avatars.githubusercontent.com/u/49702524?v=4?s=100" width="100px;" alt="Matt Chan"/><br /><sub><b>Matt Chan</b></sub></a><br /><a href="#platform-thewchan" title="Packaging/porting to new platform">📦</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://meka.rs"><img src="https://avatars.githubusercontent.com/u/610855?v=4?s=100" width="100px;" alt="Goran Mekić"/><br /><sub><b>Goran Mekić</b></sub></a><br /><a href="#platform-mekanix" title="Packaging/porting to new platform">📦</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="joonas.io"><img src="https://avatars.githubusercontent.com/u/9527681?v=4?s=100" width="100px;" alt="Joona Yoon"/><br /><sub><b>Joona Yoon</b></sub></a><br /><a href="https://github.com/frankie567/httpx-oauth/commits?author=joonas-yoon" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://vibrix.net"><img src="https://avatars.githubusercontent.com/u/39629455?v=4?s=100" width="100px;" alt="LindezaGrey"/><br /><sub><b>LindezaGrey</b></sub></a><br /><a href="https://github.com/frankie567/httpx-oauth/commits?author=LindezaGrey" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Gr3atWh173"><img src="https://avatars.githubusercontent.com/u/11838184?v=4?s=100" width="100px;" alt="R. Singh"/><br /><sub><b>R. Singh</b></sub></a><br /><a href="https://github.com/frankie567/httpx-oauth/issues?q=author%3AGr3atWh173" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/lloesche"><img src="https://avatars.githubusercontent.com/u/2124094?v=4?s=100" width="100px;" alt="Lukas Lösche"/><br /><sub><b>Lukas Lösche</b></sub></a><br /><a href="https://github.com/frankie567/httpx-oauth/issues?q=author%3Alloesche" title="Bug reports">🐛</a> <a href="https://github.com/frankie567/httpx-oauth/commits?author=lloesche" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/king-jam"><img src="https://avatars.githubusercontent.com/u/8225465?v=4?s=100" width="100px;" alt="James King"/><br /><sub><b>James King</b></sub></a><br /><a href="https://github.com/frankie567/httpx-oauth/commits?author=king-jam" title="Code">💻</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/bvolkmer"><img src="https://avatars.githubusercontent.com/u/7070761?v=4?s=100" width="100px;" alt="Benedikt Volkmer"/><br /><sub><b>Benedikt Volkmer</b></sub></a><br /><a href="https://github.com/frankie567/httpx-oauth/commits?author=bvolkmer" title="Code">💻</a> <a href="https://github.com/frankie567/httpx-oauth/issues?q=author%3Abvolkmer" title="Bug reports">🐛</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+
 ## Development
 
 ### Setup environment
 
-You should create a virtual environment and activate it:
-
-```bash
-python -m venv venv/
-```
-
-```bash
-source venv/bin/activate
-```
-
-And then install the development dependencies:
-
-```bash
-pip install -r requirements.dev.txt
-```
+We use [Hatch](https://hatch.pypa.io/latest/install/) to manage the development environment and production build. Ensure it's installed on your system.
 
 ### Run unit tests
 
 You can run all the tests with:
 
 ```bash
-make test
-```
-
-Alternatively, you can run `pytest` yourself:
-
-```bash
-pytest
+hatch run test
 ```
 
 ### Format the code
@@ -65,8 +87,18 @@ pytest
 Execute the following command to apply `isort` and `black` formatting:
 
 ```bash
-make format
+hatch run lint
 ```
+
+### Serve the documentation
+
+You can serve the documentation locally with the following command:
+
+```bash
+hatch run docs
+```
+
+The documentation will be available on [http://localhost:8000](http://localhost:8000).
 
 ## License
 
